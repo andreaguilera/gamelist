@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import api from "../../services/api";
 
 const BacklogTab = () => {
   return (
     <div className="BacklogTabTab">
-      <p>Backlog Tab!! Hurray!!</p>
+      <p>backlog</p>
       {/* First tab content will go here */}
     </div>
   );

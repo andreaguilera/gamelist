@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import api from "../../services/api";
 
 const FinnishedTab = () => {
+  const [finnishedGames, setFinnishedGames] = useState([]);
+
+  useEffect(() => {
+    const fetchFinnishedGames = async () => {
+      try {
+        const response = await api.get("/game/Finnished");
+        setFinnishedGames(response.data);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchFinnishedGames();
+  }, []);
   return (
     <div className="FinnishedTab">
-      <p>FinnishedTab Tab!! Hurray!!</p>
-      {/* First tab content will go here */}
+      {finnishedGames.map((game) => (
+        <li key={game._id}>{game.name}</li>
+      ))}
     </div>
   );
 };

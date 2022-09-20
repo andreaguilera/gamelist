@@ -2,6 +2,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const app = express();
 
 // forma de ler JSON / middlewares
@@ -11,7 +12,13 @@ app.use(
   })
 );
 
+const corsOptions = {
+  origin: "http://192.168.1.103:3000",
+  optionsSuccessStatus: 200,
+};
+
 app.use(express.json());
+app.use(cors(corsOptions));
 
 // rotas da API
 const gameRoutes = require("./routes/gameRoutes");
@@ -33,7 +40,5 @@ mongoose
   )
   .then(() => {
     console.log("Conectado ao MongoDB");
-    app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
+    app.listen(3010, () => console.log("Servidor rodando na porta 3010"));
   });
-
-//mongodb+srv://admin:admin123@cluster0.cnl7fes.mongodb.net/?retryWrites=true&w=majority
