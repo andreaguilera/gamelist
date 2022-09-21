@@ -18,7 +18,7 @@ const FinnishedTab = () => {
   return (
     <div className="FinnishedTab">
       {finnishedGames.map((game) => (
-        <li key={game._id}>{game.name}</li>
+        <li key={game.id}>{game.name}</li>
       ))}
     </div>
   );
